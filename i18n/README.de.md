@@ -1,6 +1,8 @@
 [English](../README.md) · [العربية](README.ar.md) · [Español](README.es.md) · [Français](README.fr.md) · [日本語](README.ja.md) · [한국어](README.ko.md) · [Tiếng Việt](README.vi.md) · [中文 (简体)](README.zh-Hans.md) · [中文（繁體）](README.zh-Hant.md) · [Deutsch](README.de.md) · [Русский](README.ru.md)
 
 
+[![LazyingArt banner](https://github.com/lachlanchen/lachlanchen/raw/main/figs/banner.png)](https://github.com/lachlanchen/lachlanchen/blob/main/figs/banner.png)
+
 # Voice-to-Voice-Chatbot mit Whisper, LLaMA und Groq API
 
 ![Python](https://img.shields.io/badge/Python-3.7%2B-3776AB?logo=python&logoColor=white)
@@ -10,17 +12,17 @@
 ![UI](https://img.shields.io/badge/UI-Gradio-F97316)
 ![Status](https://img.shields.io/badge/Project-Active%20Prototype-2ea44f)
 
-Dieses Projekt ist ein Voice-to-Voice-Chatbot in Echtzeit, der OpenAIs Whisper für Speech-to-Text-Transkription nutzt, LLaMA 8B über die Groq API zur Antwortgenerierung verwendet und Google Text-to-Speech (gTTS) einsetzt, um Text wieder in Sprache umzuwandeln. Die Chatbot-Oberfläche ist mit Gradio erstellt, sodass Nutzer per Spracheingabe oder durch Hochladen von Audiodateien mit dem Bot interagieren können.
+Dieses Projekt ist ein Echtzeit-Voice-to-Voice-Chatbot, der OpenAIs Whisper für die Sprache-zu-Text-Transkription nutzt, Groq API mit LLaMA 3 8B zur Generierung von Antworten verwendet und Google Text-to-Speech (gTTS) für die Umwandlung von Text zurück in Sprache einsetzt. Die Oberfläche basiert auf Gradio, sodass Nutzer:innen per Spracheingabe oder durch Hochladen von Audiodateien interagieren können.
 
 ## Überblick
 
-Die App implementiert einen vollständigen Audio-Konversationszyklus in einem einzigen Python-Skript:
+Die App implementiert einen vollständigen Audio-Konversationsablauf in einem einzelnen Python-Skript:
 
-1. Nutzeraudio vom Mikrofon oder aus einer hochgeladenen Datei entgegennehmen.
-2. Sprache mit Whisper (Modell `base`) in Text transkribieren.
-3. Eine Antwort über Groq (`llama3-8b-8192`) generieren.
-4. Antworttext mit gTTS zurück in MP3-Audio umwandeln.
-5. Sowohl Antworttext als auch abspielbares Audio in einer Gradio-Web-UI zurückgeben.
+1. Erfasst Audiodaten aus Mikrofon oder hochgeladener Datei.
+2. Transkribiert Sprache mit dem Whisper-Modell (`base`) in Text.
+3. Generiert eine Antwort über Groq (`llama3-8b-8192`).
+4. Wandelt Antworttext mit gTTS in MP3-Audio um.
+5. Gibt sowohl Antworttext als auch abspielbares Audio in einer Gradio-Weboberfläche zurück.
 
 ### Konversations-Pipeline
 
@@ -30,112 +32,115 @@ Die App implementiert einen vollständigen Audio-Konversationszyklus in einem ei
 | 📝 Transkription | Whisper `base` | Nutzertext |
 | 🧠 Verarbeitung | Groq + `llama3-8b-8192` | Assistententext |
 | 🔊 Synthese | gTTS | MP3-Antwort |
-| 🖥️ Ausgabe | Gradio UI | Text + abspielbares Audio |
+| 🖥️ Bereitstellung | Gradio UI | Text + abspielbares Audio |
 
-## Funktionen
+## ⭐ Funktionen
 
-- **Speech-to-Text**: Wandelt gesprochene Sprache mit OpenAIs Whisper-Modell in Text um.
-- **KI-generierte Antworten**: Verwendet LLaMA 8B über die Groq API, um auf Basis des transkribierten Textes intelligente Antworten zu erzeugen.
-- **Text-to-Speech**: Wandelt generierte Textantworten mit Google Text-to-Speech (gTTS) wieder in Sprache um.
-- **Echtzeit-Interaktion**: Der Chatbot arbeitet in Echtzeit und ermöglicht die Interaktion über ein Mikrofon oder per Upload von Audiodateien über eine Weboberfläche.
-- **Einfacher Single-File-Betrieb**: Die gesamte Chatbot-Pipeline ist in `voice_to_voice_chatbot.py` implementiert und damit leicht zu testen.
+- **Speech-to-Text**: Wandelt gesprochene Sprache mit dem Whisper-Modell von OpenAI in Text um.
+- **KI-generierte Antworten**: Nutzt LLaMA 8B über die Groq API, um auf Basis transkribierten Texts intelligente Antworten zu erzeugen.
+- **Text-to-Speech**: Wandelt Antworttext mit Google Text-to-Speech (gTTS) zurück in Sprache um.
+- **Echtzeit-Interaktion**: Interaktion über Mikrofon oder Upload von Audiodateien direkt über die Weboberfläche.
+- **Einfacher Single-File-Betrieb**: Die vollständige Chatbot-Pipeline ist in `voice_to_voice_chatbot.py` implementiert.
+- **Mehrsprachige Dokumentation**: In der Haupt-README verweisen Links auf Sprachversionen in `i18n/`.
 
-## Projektstruktur
+## 📁 Projektstruktur
 
 ```text
 Voice-to-text-and-voice-chatbot/
-├── voice_to_voice_chatbot.py               # Main script to run the chatbot
-├── requirements.txt                        # List of Python dependencies
-├── i18n/                                   # Localized READMEs (planned/generated in pipeline)
-└── .auto-readme-work/20260228_230442/      # README automation context/artifacts
+├── requirements.txt              # Python dependencies
+├── voice_to_voice_chatbot.py     # Main script to run the chatbot
+├── i18n/                        # Localized READMEs
+│   ├── README.ar.md
+│   ├── README.de.md
+│   ├── README.es.md
+│   ├── README.fr.md
+│   ├── README.ja.md
+│   ├── README.ko.md
+│   ├── README.ru.md
+│   ├── README.vi.md
+│   ├── README.zh-Hans.md
+│   └── README.zh-Hant.md
+└── .auto-readme-work/
+    ├── 20260228_230442/
+    └── 20260301_064403/
 ```
 
-Referenz der Legacy-Struktur aus der kanonischen README:
+## ✅ Voraussetzungen
 
-```text
-voice-to-voice-chatbot/
-├── voice_to_voice_chatbot.py  # Main script to run the chatbot
-├── requirements.txt           # List of Python dependencies
-├── README.md                  # Project documentation
-└── .gitignore                 # Git ignore file
-```
+Bevor Sie beginnen, stellen Sie sicher, dass Sie die folgenden Anforderungen erfüllt haben:
 
-## Voraussetzungen
-
-Bevor du beginnst, stelle sicher, dass folgende Anforderungen erfüllt sind:
-
-- Python 3.7 oder höher ist lokal oder in Google Colab installiert.
-- Ein Groq API Key. Du kannst dich [hier](https://groq.com/) für einen API Key registrieren.
+- Python 3.7 oder höher auf Ihrem lokalen Rechner oder Google Colab installiert.
+- Ein Groq API-Schlüssel. Sie können sich für einen API-Schlüssel bei [Groq](https://groq.com/) anmelden.
 - [Google Colab](https://colab.research.google.com/) oder eine lokale Python-Umgebung mit den erforderlichen Bibliotheken.
 - Internetzugang für:
-  - den initialen Download des Whisper-Modells.
+  - initialer Download des Whisper-Modells.
   - Groq API-Aufrufe.
-  - gTTS-Audiogenerierung.
+  - gTTS Audioerzeugung.
 
 ### Anforderungen auf einen Blick
 
-| Anforderung | Warum sie benötigt wird |
+| Anforderung | Warum es nötig ist |
 |---|---|
-| Python `3.7+` | Laufzeit für das Chatbot-Skript und seine Abhängigkeiten |
-| Groq API Key | Authentifizierter Zugriff auf LLaMA-Modellinferenz |
+| Python `3.7+` | Laufzeit für das Chatbot-Skript und Abhängigkeiten |
+| Groq API Key | Authentifizierter Zugriff auf LLaMA-Modell-Inferenz |
 | Colab oder lokale Umgebung | Ausführungsumgebung für Gradio + ML-Bibliotheken |
 | Internetzugang | Whisper-Modell-Download, Groq-Anfragen, gTTS-Synthese |
 
-## Installation
+## 🛠️ Installation
 
-Führe diese Schritte aus, um das Projekt einzurichten:
+Führen Sie diese Schritte aus, um das Projekt einzurichten:
 
-1. **Repository klonen:**
+1. **Repository klonen**
 
 ```bash
 git clone https://github.com/aquibali01/voice-to-voice-chatbot.git
 cd voice-to-voice-chatbot
 ```
 
-2. **Abhängigkeiten installieren:**
+2. **Abhängigkeiten installieren**
 
-Installiere die erforderlichen Python-Bibliotheken:
+Installieren Sie die benötigten Python-Bibliotheken:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Alternativ kannst du in Google Colab die Bibliotheken mit folgendem Befehl installieren:
+Alternativ in Google Colab:
 
 ```python
 !pip install gradio groq-api openai-whisper gtts
 ```
 
-## Konfiguration
+## ⚙️ Konfiguration
 
-### Groq API Key einrichten
+### Groq API-Schlüssel einrichten
 
-Füge deinen Groq API Key zu den Umgebungsvariablen hinzu:
+Exportieren Sie Ihren Groq API-Schlüssel:
 
 ```bash
 export GROQ_API_KEY='your_groq_api_key'
 ```
 
-In Google Colab kannst du den API Key so setzen:
+In Google Colab setzen Sie ihn in der Laufzeit:
 
 ```python
 import os
 os.environ['GROQ_API_KEY'] = 'your_groq_api_key'
 ```
 
-### Wichtiger Laufzeithinweis (aktuelles Code-Verhalten)
+### Wichtiger Laufzeit-Hinweis (aktuelles Code-Verhalten)
 
-Das aktuelle Skript initialisiert den Groq-Client mit einem fest codierten Platzhalter:
+Das aktuelle Skript initialisiert den Groq-Client mit einem hartkodierten Platzhalter:
 
 ```python
 client = Groq(api_key="your_groq_api_key")
 ```
 
-Wenn du nur `GROQ_API_KEY` in den Umgebungsvariablen setzt, musst du das Skript so anpassen, dass es aus `os.environ` liest, oder den Platzhalter direkt ersetzen, sonst schlägt die API-Authentifizierung fehl.
+Wenn Sie `GROQ_API_KEY` nur in der Umgebung gesetzt haben, aktualisieren Sie das Skript, damit es aus `os.environ` liest (oder ersetzen Sie den Platzhalter direkt), andernfalls können Authentifizierungsaufrufe fehlschlagen.
 
-## Verwendung
+## ▶️ Verwendung
 
-Um den Chatbot zu starten, führe das Hauptskript aus:
+Starten Sie den Chatbot mit:
 
 ```bash
 python voice_to_voice_chatbot.py
@@ -143,24 +148,24 @@ python voice_to_voice_chatbot.py
 
 Oder in Google Colab:
 
-Kopiere das Skript in eine Codezelle und führe sie aus.
+Kopieren Sie das Skript in eine Code-Zelle und führen Sie es aus.
 
-Die Gradio-Oberfläche startet und ermöglicht dir die Interaktion mit dem Chatbot.
+Die Gradio-Oberfläche startet lokal und ermöglicht die Interaktion mit dem Chatbot.
 
 ### Interaktion mit dem Chatbot
 
-- **Mikrofon verwenden**: Sprich direkt in das Mikrofon. Der Chatbot transkribiert deine Sprache, generiert eine Antwort und spielt sie als Audio ab.
-- **Audio hochladen**: Lade eine zuvor aufgenommene Audiodatei hoch. Der Chatbot transkribiert das Audio, erzeugt eine Antwort und wandelt die Antwort wieder in Sprache um.
+- **Mikrofon verwenden**: Sprechen Sie direkt in das Mikrofon. Der Chatbot transkribiert Ihre Sprache, erzeugt eine Antwort und spielt sie als Audio ab.
+- **Audio hochladen**: Laden Sie eine voraufgezeichnete Audiodatei hoch. Der Chatbot transkribiert die Aufnahme, erzeugt eine Antwort und spielt das synthetisierte Audio ab.
 
-## Beispiele
+## 🎬 Beispiele
 
-### Beispielhafter Sprachfluss
+### Beispielhafter Sprachablauf
 
 1. Aufnahme: "What are three tips to learn Python quickly?"
-2. Whisper transkribiert deinen Eingabetext.
-3. Das Groq-LLaMA-Modell generiert eine Antwort.
-4. gTTS erzeugt eine MP3-Antwort.
-5. Gradio zeigt Antworttext und Audiowiedergabe an.
+2. Whisper transkribiert Ihren Eingabetext.
+3. Das Groq-LLaMA-Modell erzeugt eine Antwort.
+4. gTTS erstellt eine MP3-Antwort.
+5. Gradio zeigt Antworttext und einen Audio-Player an.
 
 ### Beispielhafter Ausführungsbefehl
 
@@ -168,68 +173,69 @@ Die Gradio-Oberfläche startet und ermöglicht dir die Interaktion mit dem Chatb
 python voice_to_voice_chatbot.py
 ```
 
-Erwartetes Ergebnis: Eine lokale Gradio-App öffnet sich im Browser mit einem Audioeingang und zwei Ausgaben (Text + Audio).
+Erwartetes Ergebnis: Eine lokale Gradio-App öffnet sich in Ihrem Browser mit einem Audioeingang und zwei Ausgaben (Text + Audio).
 
-## Entwicklungshinweise
+## 🧪 Entwicklungshinweise
 
-- Hauptfunktion der Pipeline: `chatbot_pipeline(audio_path)`.
-- Das Whisper-Modell wird beim Start geladen: `whisper.load_model("base")`.
-- Temporäre MP3-Dateien werden über `NamedTemporaryFile(..., delete=False)` erstellt.
-- Die Fehlerbehandlung gibt derzeit `(str(e), None)` an die UI zurück.
-- Die Abhängigkeiten in `requirements.txt` enthalten sowohl `whisper` als auch `openai-whisper`; je nach Umgebung kann das redundant sein.
+- Haupt-Pipeline-Funktion: `chatbot_pipeline(audio_path)`.
+- Das Whisper-Modell wird beim Start mit `whisper.load_model("base")` geladen.
+- Temporäre MP3-Dateien werden mit `NamedTemporaryFile(..., delete=False)` erstellt.
+- Fehlerbehandlung gibt aktuell `(str(e), None)` an die UI zurück.
+- `requirements.txt` enthält sowohl `whisper` als auch `openai-whisper`; je nach Umgebung kann das redundant sein.
 
-## Fehlerbehebung
+## 🐞 Fehlerbehebung
 
 ### Häufige Probleme
 
-`ModuleNotFoundError`: Stelle sicher, dass du die korrekte Version des Whisper-Moduls installiert hast mit
+`ModuleNotFoundError`: Stellen Sie sicher, dass das richtige Whisper-Paket installiert ist:
 
 ```python
 !pip install -U openai-whisper
 ```
 
-`Groq API Key Error`: Prüfe deinen API Key und stelle sicher, dass er korrekt in den Umgebungsvariablen gesetzt ist.
+`Groq API Key Error`: Überprüfen Sie die Verfügbarkeit und Gültigkeit Ihres Schlüssels in Umgebung oder Skript.
 
 Zusätzliche Fehlerbehebung:
 
-- Wenn die App sofort mit Authentifizierungsfehlern fehlschlägt, prüfe den fest codierten Wert `api_key="your_groq_api_key"` in `voice_to_voice_chatbot.py`.
-- Wenn keine Mikrofonaufnahme verfügbar ist, lade zuerst eine Audiodatei hoch, um die STT -> LLM -> TTS-Pipeline zu validieren.
-- Wenn das Antwort-Audio leer ist, überprüfe den ausgehenden Netzwerkzugriff für gTTS.
+- Wenn die App mit Authentifizierungsfehlern endet, prüfen Sie den hartkodierten Wert `api_key="your_groq_api_key"` in `voice_to_voice_chatbot.py`.
+- Wenn keine Mikrofonaufnahme verfügbar ist, laden Sie zuerst eine Audiodatei hoch, um die STT → LLM → TTS-Pipeline zu validieren.
+- Wenn das Antwort-Audio leer ist, prüfen Sie den ausgehenden Netzwerkzugriff für gTTS und Groq.
 
 ### Schnelle Diagnose-Checkliste
 
 | Prüfung | Validierung |
 |---|---|
-| API-Key-Anbindung | `Groq(api_key=...)` ist nicht als Platzhalter belassen |
-| Whisper-Installation | `openai-whisper` lässt sich fehlerfrei importieren |
+| API-Key-Konfiguration | `Groq(api_key=...)` bleibt nicht als Platzhalter stehen |
+| Whisper-Installation | `openai-whisper` lässt sich sauber importieren |
 | Netzwerkpfad | Ausgehender Zugriff für Groq + gTTS verfügbar |
-| Audioquelle | Mikrofonberechtigungen aktiv oder Dateiupload funktioniert |
+| Audioquelle | Mikrofonberechtigungen aktiviert oder Dateiupload funktioniert |
 
-## Roadmap
+## 🗺️ Roadmap
 
-- Groq API Key standardmäßig direkt aus Umgebungsvariablen lesen.
+- Groq API-Schlüssel standardmäßig direkt aus Umgebungsvariablen lesen.
 - Tests für Pipeline-Hilfsfunktionen hinzufügen.
-- Optionale Modell-/Konfigurationseinstellungen über Umgebungsvariablen oder CLI-Argumente hinzufügen.
-- i18n-README-Dateien unter `i18n/` ergänzen, passend zu den Sprach-Navigationslinks.
-- Deployment-Optionen hinzufügen (zum Beispiel Docker oder Hugging Face Spaces).
+- Optionale Modell- und Konfigurationseinstellungen über Umgebungsvariablen oder CLI-Argumente hinzufügen.
+- Bereitstellungsoptionen hinzufügen (zum Beispiel Docker oder Hugging Face Spaces).
 
-## Mitwirken
+## ❤️ Support
 
-Beiträge sind willkommen. Bitte fork dieses Repository, erstelle einen neuen Branch und sende einen Pull Request mit deinen Änderungen.
+| Donate | PayPal | Stripe |
+|---|---|---|
+| [![Donate](https://img.shields.io/badge/Donate-LazyingArt-0EA5E9?style=for-the-badge&logo=ko-fi&logoColor=white)](https://chat.lazying.art/donate) | [![PayPal](https://img.shields.io/badge/PayPal-RongzhouChen-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/RongzhouChen) | [![Stripe](https://img.shields.io/badge/Stripe-Donate-635BFF?style=for-the-badge&logo=stripe&logoColor=white)](https://buy.stripe.com/aFadR8gIaflgfQV6T4fw400) |
+
+## 🤝 Mitwirken
+
+Beiträge sind willkommen. Bitte forken Sie dieses Repository, erstellen Sie einen neuen Branch und senden Sie einen Pull Request mit Ihren Änderungen.
 
 Vorgeschlagener Beitragsablauf:
 
 1. Repository forken und klonen.
 2. Einen Feature-Branch erstellen.
-3. Änderungen vornehmen und testen.
-4. Pull Request mit klarer Beschreibung öffnen.
+3. Änderungen implementieren und testen.
+4. Einen Pull Request mit klarer Beschreibung und Begründung öffnen.
 
-## Support
+## 📄 Lizenz
 
-Im aktuellen Repository-Inhalt wurden keine expliziten Spenden-/Sponsoring-Links gefunden. Falls Maintainer Support-Kanäle ergänzen, sollten sie hier aufgeführt werden.
+Dieses Projekt ist derzeit als MIT-lizenziert dokumentiert. Siehe die LICENSE-Datei für Details.
 
-## Lizenz
-
-Dieses Projekt ist unter der MIT License lizenziert. Siehe die LICENSE-Datei für Details.
-
-Annahme: Eine `LICENSE`-Datei ist vorgesehen, aber in diesem Repository-Snapshot möglicherweise noch nicht vorhanden.
+Annahme: Eine `LICENSE`-Datei ist vorgesehen, könnte im aktuellen Repository-Snapshot jedoch noch nicht vorhanden sein.
